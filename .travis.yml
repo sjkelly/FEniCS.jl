@@ -12,7 +12,6 @@ matrix:
     - julia: nightly
 script:
     - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-    - julia -e 'using Pkg; Pkg.clone(pwd())'
     - julia -e 'using Pkg; ENV["PYTHON"]="";Pkg.build("FEniCS");'
     - julia -e 'using Pkg; Pkg.test("FEniCS", coverage=true)'
 after_success:
