@@ -1,7 +1,9 @@
 using PyCall
 
 	try
+		pyimport_conda("pkgconfig")
 		pyimport_conda("fenics", "fenics", "conda-forge")
+		pyimport_conda("mshr", "mshr", "conda-forge")
 	catch ee
 		typeof(ee) <: PyCall.PyError || rethrow(ee)
 		@warn("""
