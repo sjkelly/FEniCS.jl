@@ -16,7 +16,7 @@ matrix:
 script:
     - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
     - julia -e 'using Pkg; ENV["PYTHON"]="";Pkg.add("Conda");Pkg.build("FEniCS");'
-    - julia -e 'using Pkg, Conda; ENV["PATH"] = "$(Conda.BINDIR);$(ENV["PATH"])"; print(ENV["PATH"]); Pkg.test("FEniCS", coverage=true)'
+    - julia -e 'using Pkg, Conda; ENV["PATH"] = "$(Conda.BINDIR);$(ENV["PATH"])";ENV["PKG_CONFIG_PATH"] = "$(Conda.LIBDIR*"/pkgconfig");$(ENV["PKG_CONFIG_PATH"])"; print(ENV["PKG_CONFIG_PATH"]); Pkg.test("FEniCS", coverage=true)'
 after_success:
   # push coverage results to Coveralls, .cov files were copied back by script above
   - echo "**** submitting coverage information"
