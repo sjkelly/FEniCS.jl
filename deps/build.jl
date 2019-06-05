@@ -1,7 +1,6 @@
 using PyCall
 
 	try
-		pyimport_conda("pkgconfig", "pkgconfig")
 		pyimport_conda("fenics", "fenics", "conda-forge")
 		pyimport_conda("mshr", "mshr", "conda-forge")
 	catch ee
