@@ -2,9 +2,10 @@
 language: julia
 os:
   - linux
+dist: xenial
 julia:
   - 1.1
-  - nightly
+#  - nightly
 before_install:
   - sudo apt-get install -y pkg-config
 notifications:
